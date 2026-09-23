@@ -2,128 +2,128 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>APNA BANK</title>
+
 <style>
 *{box-sizing:border-box}
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#eef3f8;
-  color:#17202a;
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#eef3f8;
+ color:#17202a
 }
 header{
-  background:#123c69;
-  color:white;
-  padding:12px 18px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+ background:#123c69;
+ color:#fff;
+ padding:12px 18px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center
 }
 header h1{margin:0;font-size:24px}
-header span{font-size:13px}
 .container{max-width:1100px;margin:auto;padding:12px}
 .card{
-  background:white;
-  border-radius:10px;
-  padding:14px;
-  margin-bottom:12px;
-  box-shadow:0 2px 8px #0001;
+ background:#fff;
+ border-radius:10px;
+ padding:14px;
+ margin-bottom:12px;
+ box-shadow:0 2px 8px #0001
 }
-.row{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
+.row{display:flex;gap:8px;flex-wrap:wrap}
 input,select,button{
-  padding:9px 10px;
-  border-radius:6px;
-  border:1px solid #bbc5d0;
-  font-size:14px;
+ padding:10px;
+ border-radius:6px;
+ border:1px solid #bbc5d0;
+ font-size:14px
 }
-input,select{background:white}
 button{
-  cursor:pointer;
-  background:#123c69;
-  color:white;
-  border:none;
+ background:#123c69;
+ color:#fff;
+ border:0;
+ cursor:pointer
 }
-button:hover{opacity:.9}
-.btn-danger{background:#b42318}
 .btn-green{background:#16803c}
+.btn-red{background:#b42318}
 .btn-gray{background:#59636e}
 .hidden{display:none}
+
 .customer-head{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:8px
 }
 .info{
-  background:#f3f6f9;
-  padding:9px;
-  border-radius:7px;
+ background:#f3f6f9;
+ padding:9px;
+ border-radius:7px
 }
-.info b{display:block;font-size:12px;color:#65727e}
+.info b{
+ display:block;
+ font-size:12px;
+ color:#65727e
+}
 .info span{font-size:15px}
+
 .work-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:7px;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:7px
 }
-.work-grid button{font-size:13px}
-.customer-list{
-  max-height:380px;
-  overflow:auto;
-}
+.work-grid button{min-height:42px}
+
 .customer-item{
-  border:1px solid #d8dee5;
-  border-radius:8px;
-  padding:10px;
-  margin-bottom:7px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:8px;
+ border:1px solid #d8dee5;
+ border-radius:8px;
+ padding:10px;
+ margin-bottom:7px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:8px
 }
-.customer-item small{color:#667}
+
+.notice{
+ padding:10px;
+ border-radius:6px;
+ margin-top:8px;
+ background:#edf7ff
+}
+
 .modal{
-  position:fixed;
-  inset:0;
-  background:#0007;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:15px;
+ position:fixed;
+ inset:0;
+ background:#0008;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:15px;
+ z-index:1000
 }
 .modal-box{
-  background:white;
-  width:100%;
-  max-width:430px;
-  border-radius:10px;
-  padding:18px;
+ background:#fff;
+ width:100%;
+ max-width:400px;
+ border-radius:10px;
+ padding:18px
 }
-.modal-box h3{margin-top:0}
-.notice{
-  padding:9px;
-  border-radius:6px;
-  margin-top:8px;
-  background:#edf7ff;
-}
+.modal-box input{width:100%;margin:8px 0}
+
 table{
-  width:100%;
-  border-collapse:collapse;
-  font-size:13px;
+ width:100%;
+ border-collapse:collapse;
+ font-size:13px
 }
 th,td{
-  border:1px solid #d8dee5;
-  padding:7px;
-  text-align:left;
+ border:1px solid #d8dee5;
+ padding:7px;
+ text-align:left
 }
 th{background:#f1f4f7}
+
 @media(max-width:750px){
  .customer-head{grid-template-columns:repeat(2,1fr)}
  .work-grid{grid-template-columns:repeat(2,1fr)}
- header h1{font-size:20px}
 }
 </style>
 </head>
@@ -131,1079 +131,1360 @@ th{background:#f1f4f7}
 <body>
 
 <header>
-  <h1>APNA BANK</h1>
-  <span>Banking Work Simulation</span>
+<h1>APNA BANK</h1>
+<span>Banking Work Simulation</span>
 </header>
 
 <div class="container">
 
-  <div class="card">
-    <h3 style="margin-top:0">Customer Search / Account Opening</h3>
+<div class="card">
+<h3>Customer Search / Account Opening</h3>
 
-    <div class="row">
-      <input id="searchAccount" placeholder="12-अंकीय Account Number">
-      <button onclick="searchCustomer()">Search</button>
-      <button class="btn-gray" onclick="showAllCustomers()">All Customers</button>
-      <button class="btn-green" onclick="openAccountForm()">+ नया खाता</button>
-    </div>
+<div class="row">
+<input id="searchAccount" placeholder="12-अंकीय Account Number">
+<button id="searchBtn">Search</button>
+<button id="allBtn" class="btn-gray">All Customers</button>
+<button id="newAccountBtn" class="btn-green">+ नया खाता</button>
+</div>
 
-    <div id="message"></div>
-  </div>
+<div id="message"></div>
+</div>
 
-  <div id="accountForm" class="card hidden">
-    <h3>नया ग्राहक / नया खाता</h3>
 
-    <div class="row">
-      <input id="newName" placeholder="ग्राहक का पूरा नाम">
-      <select id="newType">
-        <option value="Savings">Savings Account</option>
-        <option value="Current">Current Account</option>
-      </select>
-      <input id="openingBalance" type="number" min="0" placeholder="Opening Balance">
-      <button onclick="createAccount()">खाता खोलें</button>
-      <button class="btn-gray" onclick="closeAccountForm()">Cancel</button>
-    </div>
-  </div>
+<div id="accountForm" class="card hidden">
+<h3>नया ग्राहक / नया खाता</h3>
 
-  <div id="allCustomers" class="card hidden">
-    <h3 style="margin-top:0">सभी ग्राहक</h3>
-    <div id="customerList" class="customer-list"></div>
-  </div>
+<div class="row">
+<input id="newName" placeholder="ग्राहक का नाम">
 
-  <div id="customerSection" class="hidden">
+<select id="newType">
+<option value="Savings">Savings Account</option>
+<option value="Current">Current Account</option>
+</select>
 
-    <div class="card">
-      <h3 style="margin:0 0 10px">Customer Details</h3>
+<input id="openingBalance" type="number" min="0" placeholder="Opening Balance">
 
-      <div class="customer-head">
-        <div class="info">
-          <b>नाम</b>
-          <span id="cName">-</span>
-        </div>
-        <div class="info">
-          <b>Account Number</b>
-          <span id="cAccount">-</span>
-        </div>
-        <div class="info">
-          <b>Account Type</b>
-          <span id="cType">-</span>
-        </div>
-        <div class="info">
-          <b>Balance</b>
-          <span id="cBalance">₹0</span>
-        </div>
-      </div>
-    </div>
+<button id="createBtn" class="btn-green">खाता खोलें</button>
+<button id="cancelAccountBtn" class="btn-gray">Cancel</button>
+</div>
+</div>
 
-    <div class="card">
-      <h3 style="margin-top:0">Banking Work</h3>
 
-      <div class="work-grid">
-        <button onclick="startWork('deposit')">पैसा जमा</button>
-        <button onclick="startWork('withdraw')">पैसा निकालना</button>
-        <button onclick="startWork('balance')">Balance Check</button>
-        <button onclick="startWork('transfer')">Money Transfer</button>
-        <button onclick="startWork('kyc')">KYC Update</button>
-        <button onclick="startWork('cheque')">Cheque</button>
-        <button onclick="startWork('atm')">ATM / Debit Card</button>
-        <button onclick="startWork('upi')">UPI</button>
-        <button onclick="startWork('fd')">FD / RD</button>
-        <button onclick="startWork('loan')">Loan</button>
-        <button onclick="startWork('statement')">Statement</button>
-        <button class="btn-danger" onclick="startWork('delete')">Account Delete</button>
-      </div>
-    </div>
+<div id="allCustomers" class="card hidden">
+<h3>सभी ग्राहक</h3>
+<div id="customerList"></div>
+</div>
 
-    <div id="workPanel" class="card hidden"></div>
 
-  </div>
+<div id="customerSection" class="hidden">
+
+<div class="card">
+<h3>Customer Details</h3>
+
+<div class="customer-head">
+
+<div class="info">
+<b>नाम</b>
+<span id="cName">-</span>
+</div>
+
+<div class="info">
+<b>Account Number</b>
+<span id="cAccount">-</span>
+</div>
+
+<div class="info">
+<b>Account Type</b>
+<span id="cType">-</span>
+</div>
+
+<div class="info">
+<b>Balance</b>
+<span id="cBalance">₹0</span>
+</div>
+
+</div>
+</div>
+
+
+<div class="card">
+<h3>Banking Work</h3>
+
+<div class="work-grid">
+
+<button data-work="deposit">पैसा जमा</button>
+<button data-work="withdraw">पैसा निकालना</button>
+<button data-work="balance">Balance Check</button>
+<button data-work="transfer">Money Transfer</button>
+<button data-work="kyc">KYC Update</button>
+<button data-work="cheque">Cheque</button>
+<button data-work="atm">ATM / Debit Card</button>
+<button data-work="upi">UPI</button>
+<button data-work="fd">FD / RD</button>
+<button data-work="loan">Loan</button>
+<button data-work="statement">Statement</button>
+<button data-work="delete" class="btn-red">Account Delete</button>
+
+</div>
+</div>
+
+
+<div id="workPanel" class="card hidden"></div>
 
 </div>
 
-<!-- PASSWORD MODAL -->
+</div>
+
+
+<!-- PASSWORD -->
 <div id="passwordModal" class="modal hidden">
-  <div class="modal-box">
-    <h3>Password Required</h3>
-    <p>Banking work करने के लिए password डालें।</p>
 
-    <input id="passwordInput" type="password" placeholder="Password" style="width:100%">
+<div class="modal-box">
 
-    <div class="row" style="margin-top:10px">
-      <button onclick="checkPassword()">Continue</button>
-      <button class="btn-gray" onclick="closePassword()">Cancel</button>
-    </div>
+<h3>Banking Work Password</h3>
 
-    <div id="passwordMessage"></div>
-  </div>
+<p>Banking work करने के लिए password डालें।</p>
+
+<input id="passwordInput"
+type="password"
+inputmode="numeric"
+maxlength="4"
+placeholder="Password">
+
+<div class="row">
+
+<button id="continueBtn">Continue</button>
+
+<button id="closePasswordBtn" class="btn-gray">
+Cancel
+</button>
+
 </div>
+
+<div id="passwordMessage"></div>
+
+</div>
+</div>
+
 
 <script>
 
+"use strict";
+
 const BANK_PASSWORD = "2468";
 
-let customers = JSON.parse(localStorage.getItem("apnaBankCustomers") || "[]");
+let customers = [];
+
+try{
+ customers = JSON.parse(
+  localStorage.getItem("apnaBankCustomers") || "[]"
+ );
+
+ if(!Array.isArray(customers)){
+  customers=[];
+ }
+}catch(e){
+ customers=[];
+}
+
 let selectedAccount = null;
 let pendingWork = null;
 
-function saveCustomers(){
-  localStorage.setItem("apnaBankCustomers", JSON.stringify(customers));
+
+/* ---------- BASIC FUNCTIONS ---------- */
+
+function saveData(){
+ localStorage.setItem(
+  "apnaBankCustomers",
+  JSON.stringify(customers)
+ );
 }
 
-function money(n){
-  return "₹" + Number(n || 0).toLocaleString("en-IN");
+function money(amount){
+ return "₹" + Number(amount || 0).toLocaleString("en-IN");
 }
 
-function generateAccountNumber(){
+function accountNumber(){
 
-  let number;
+ let number;
 
-  do{
-    number = "";
-
-    for(let i=0;i<12;i++){
-      number += Math.floor(Math.random()*10);
-    }
-
-  }while(customers.some(c => c.account === number));
-
-  return number;
-}
-
-function showMessage(text, type="info"){
-  const box = document.getElementById("message");
-
-  box.innerHTML =
-    `<div class="notice">${text}</div>`;
-}
-
-function openAccountForm(){
-  document.getElementById("accountForm").classList.remove("hidden");
-}
-
-function closeAccountForm(){
-  document.getElementById("accountForm").classList.add("hidden");
-}
-
-function createAccount(){
-
-  const name = document.getElementById("newName").value.trim();
-  const type = document.getElementById("newType").value;
-  const balance = Number(document.getElementById("openingBalance").value || 0);
-
-  if(!name){
-    alert("ग्राहक का नाम डालें।");
-    return;
+ do{
+  number="";
+  for(let i=0;i<12;i++){
+   number += Math.floor(Math.random()*10);
   }
+ }while(customers.some(c=>c.account===number));
 
-  if(balance < 0){
-    alert("Balance सही डालें।");
-    return;
-  }
-
-  const customer = {
-    id: Date.now(),
-    name:name,
-    account:generateAccountNumber(),
-    type:type,
-    balance:balance,
-    kyc:"Pending",
-    cheque:"Not Issued",
-    atm:"Not Issued",
-    upi:"Not Registered",
-    fd:[],
-    rd:[],
-    loan:[],
-    transactions:[
-      {
-        date:new Date().toLocaleString("en-IN"),
-        type:"Account Opening",
-        amount:balance,
-        details:"New account created"
-      }
-    ]
-  };
-
-  customers.push(customer);
-  saveCustomers();
-
-  document.getElementById("newName").value="";
-  document.getElementById("openingBalance").value="";
-
-  closeAccountForm();
-
-  selectCustomer(customer.account);
-
-  alert(
-    "खाता सफलतापूर्वक खुल गया।\n\n" +
-    "Customer: " + customer.name +
-    "\nAccount Number: " + customer.account
-  );
+ return number;
 }
+
+function getCustomer(){
+
+ return customers.find(
+  c=>c.account===selectedAccount
+ );
+}
+
+function safe(text){
+
+ return String(text ?? "")
+ .replace(/&/g,"&amp;")
+ .replace(/</g,"&lt;")
+ .replace(/>/g,"&gt;")
+ .replace(/"/g,"&quot;")
+ .replace(/'/g,"&#039;");
+}
+
+
+/* ---------- ACCOUNT OPENING ---------- */
+
+document.getElementById("newAccountBtn")
+.addEventListener("click",function(){
+
+ document.getElementById("accountForm")
+ .classList.remove("hidden");
+
+});
+
+
+document.getElementById("cancelAccountBtn")
+.addEventListener("click",function(){
+
+ document.getElementById("accountForm")
+ .classList.add("hidden");
+
+});
+
+
+document.getElementById("createBtn")
+.addEventListener("click",function(){
+
+ const name=document
+ .getElementById("newName").value.trim();
+
+ const type=document
+ .getElementById("newType").value;
+
+ const balance=Number(
+  document.getElementById("openingBalance").value || 0
+ );
+
+ if(!name){
+  alert("ग्राहक का नाम डालें।");
+  return;
+ }
+
+ if(balance<0){
+  alert("Opening Balance सही डालें।");
+  return;
+ }
+
+ const customer={
+  id:Date.now(),
+  name:name,
+  account:accountNumber(),
+  type:type,
+  balance:balance,
+  kyc:"Pending",
+  cheque:"Not Issued",
+  atm:"Not Issued",
+  upi:"Not Registered",
+  fd:[],
+  loan:[],
+  transactions:[
+   {
+    date:new Date().toLocaleString("en-IN"),
+    type:"Account Opening",
+    amount:balance,
+    details:"New account created"
+   }
+  ]
+ };
+
+ customers.push(customer);
+ saveData();
+
+ document.getElementById("newName").value="";
+ document.getElementById("openingBalance").value="";
+
+ document.getElementById("accountForm")
+ .classList.add("hidden");
+
+ selectCustomer(customer.account);
+
+ alert(
+  "खाता सफलतापूर्वक खुल गया।\n\n"+
+  "Customer: "+customer.name+
+  "\nAccount Number: "+customer.account
+ );
+
+});
+
+
+/* ---------- SEARCH ---------- */
+
+document.getElementById("searchBtn")
+.addEventListener("click",searchCustomer);
+
+document.getElementById("searchAccount")
+.addEventListener("keydown",function(e){
+
+ if(e.key==="Enter"){
+  searchCustomer();
+ }
+
+});
+
 
 function searchCustomer(){
 
-  const account =
-    document.getElementById("searchAccount").value.trim();
+ const account=document
+ .getElementById("searchAccount")
+ .value.trim();
 
-  if(!/^\d{12}$/.test(account)){
-    alert("12 अंकों का सही Account Number डालें।");
-    return;
-  }
+ if(!/^\d{12}$/.test(account)){
+  alert("12 अंकों का Account Number डालें।");
+  return;
+ }
 
-  selectCustomer(account);
+ selectCustomer(account);
 }
+
 
 function selectCustomer(account){
 
-  const customer =
-    customers.find(c => c.account === account);
+ const c=customers.find(
+  x=>x.account===account
+ );
 
-  if(!customer){
-    alert("इस Account Number का कोई customer नहीं मिला।");
-    return;
-  }
+ if(!c){
+  alert("Customer नहीं मिला।");
+  return;
+ }
 
-  selectedAccount = account;
+ selectedAccount=account;
 
-  document.getElementById("customerSection")
-    .classList.remove("hidden");
+ document.getElementById("customerSection")
+ .classList.remove("hidden");
 
-  document.getElementById("allCustomers")
-    .classList.add("hidden");
+ document.getElementById("allCustomers")
+ .classList.add("hidden");
 
-  document.getElementById("workPanel")
-    .classList.add("hidden");
+ document.getElementById("workPanel")
+ .classList.add("hidden");
 
-  updateCustomerDetails();
+ updateDetails();
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+ window.scrollTo(0,0);
 }
 
-function getSelectedCustomer(){
 
-  return customers.find(
-    c => c.account === selectedAccount
-  );
+function updateDetails(){
+
+ const c=getCustomer();
+
+ if(!c)return;
+
+ document.getElementById("cName").textContent=c.name;
+ document.getElementById("cAccount").textContent=c.account;
+ document.getElementById("cType").textContent=c.type;
+ document.getElementById("cBalance").textContent=money(c.balance);
 }
 
-function updateCustomerDetails(){
 
-  const c = getSelectedCustomer();
+/* ---------- ALL CUSTOMERS ---------- */
 
-  if(!c) return;
+document.getElementById("allBtn")
+.addEventListener("click",showAllCustomers);
 
-  document.getElementById("cName").textContent=c.name;
-  document.getElementById("cAccount").textContent=c.account;
-  document.getElementById("cType").textContent=c.type;
-  document.getElementById("cBalance").textContent=money(c.balance);
-}
 
 function showAllCustomers(){
 
-  const box=document.getElementById("allCustomers");
-  const list=document.getElementById("customerList");
+ const box=document
+ .getElementById("allCustomers");
 
-  box.classList.remove("hidden");
+ const list=document
+ .getElementById("customerList");
 
-  if(customers.length===0){
-    list.innerHTML="<p>अभी कोई customer नहीं है।</p>";
-    return;
-  }
+ box.classList.remove("hidden");
 
-  list.innerHTML=customers.map(c => `
+ if(customers.length===0){
 
-    <div class="customer-item">
+  list.innerHTML="<p>अभी कोई customer नहीं है।</p>";
+  return;
 
-      <div>
-        <b>${escapeHtml(c.name)}</b><br>
-        <small>${c.account} | ${c.type} | ${money(c.balance)}</small>
-      </div>
+ }
 
-      <button onclick="selectCustomer('${c.account}')">
-        Work
-      </button>
+ list.innerHTML=customers.map(function(c){
 
-    </div>
+  return `
+  <div class="customer-item">
 
-  `).join("");
+   <div>
+    <b>${safe(c.name)}</b><br>
+    <small>
+    ${c.account} |
+    ${safe(c.type)} |
+    ${money(c.balance)}
+    </small>
+   </div>
+
+   <button data-select="${c.account}">
+   Work
+   </button>
+
+  </div>
+  `;
+
+ }).join("");
+
+ list.querySelectorAll("[data-select]")
+ .forEach(function(btn){
+
+  btn.addEventListener("click",function(){
+
+   selectCustomer(btn.dataset.select);
+
+  });
+
+ });
+
 }
 
-function escapeHtml(text){
 
-  return String(text)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-}
+/* ---------- WORK BUTTONS ---------- */
 
-/* PASSWORD */
+document.querySelectorAll("[data-work]")
+.forEach(function(btn){
+
+ btn.addEventListener("click",function(){
+
+  startWork(btn.dataset.work);
+
+ });
+
+});
+
 
 function startWork(work){
 
-  if(!selectedAccount){
-    alert("पहले customer select करें।");
-    return;
-  }
+ if(!selectedAccount){
+  alert("पहले customer select करें।");
+  return;
+ }
 
-  pendingWork=work;
+ pendingWork=work;
 
-  document.getElementById("passwordInput").value="";
-  document.getElementById("passwordMessage").innerHTML="";
+ const modal=document
+ .getElementById("passwordModal");
 
-  document.getElementById("passwordModal")
-    .classList.remove("hidden");
+ const input=document
+ .getElementById("passwordInput");
 
-  setTimeout(()=>{
-    document.getElementById("passwordInput").focus();
-  },100);
+ document.getElementById("passwordMessage")
+ .innerHTML="";
+
+ input.value="";
+
+ modal.classList.remove("hidden");
+
+ setTimeout(function(){
+  input.focus();
+ },100);
 }
+
+
+/* ---------- PASSWORD FIX ---------- */
+
+document.getElementById("continueBtn")
+.addEventListener("click",checkPassword);
+
+
+document.getElementById("closePasswordBtn")
+.addEventListener("click",closePassword);
+
+
+document.getElementById("passwordInput")
+.addEventListener("keydown",function(e){
+
+ if(e.key==="Enter"){
+  e.preventDefault();
+  checkPassword();
+ }
+
+});
+
 
 function closePassword(){
 
-  document.getElementById("passwordModal")
-    .classList.add("hidden");
+ document.getElementById("passwordModal")
+ .classList.add("hidden");
 
-  pendingWork=null;
+ document.getElementById("passwordInput").value="";
+
+ pendingWork=null;
 }
+
 
 function checkPassword(){
 
-  const password =
-    document.getElementById("passwordInput").value;
+ const input=document
+ .getElementById("passwordInput");
 
-  if(password !== BANK_PASSWORD){
+ const password=input.value.trim();
 
-    document.getElementById("passwordMessage").innerHTML =
-      '<div class="notice">गलत password।</div>';
-
-    return;
-  }
-
-  document.getElementById("passwordModal")
-    .classList.add("hidden");
+ if(password === BANK_PASSWORD){
 
   const work=pendingWork;
+
+  document.getElementById("passwordModal")
+  .classList.add("hidden");
+
+  input.value="";
   pendingWork=null;
 
-  showWorkPanel(work);
+  showWork(work);
+
+ }else{
+
+  document.getElementById("passwordMessage")
+  .innerHTML=
+  '<div class="notice">गलत password। Password 2468 है।</div>';
+
+  input.focus();
+ }
+
 }
 
-/* WORK PANEL */
 
-function showWorkPanel(work){
+/* ---------- WORK PANEL ---------- */
 
-  const panel=document.getElementById("workPanel");
+function showWork(work){
 
-  panel.classList.remove("hidden");
+ const panel=document
+ .getElementById("workPanel");
 
-  const titles={
-    deposit:"पैसा जमा",
-    withdraw:"पैसा निकालना",
-    balance:"Balance Check",
-    transfer:"Money Transfer",
-    kyc:"KYC Update",
-    cheque:"Cheque",
-    atm:"ATM / Debit Card",
-    upi:"UPI",
-    fd:"FD / RD",
-    loan:"Loan",
-    statement:"Account Statement",
-    delete:"Account Delete"
-  };
+ const contentTitles={
+  deposit:"पैसा जमा",
+  withdraw:"पैसा निकालना",
+  balance:"Balance Check",
+  transfer:"Money Transfer",
+  kyc:"KYC Update",
+  cheque:"Cheque",
+  atm:"ATM / Debit Card",
+  upi:"UPI",
+  fd:"FD / RD",
+  loan:"Loan",
+  statement:"Account Statement",
+  delete:"Account Delete"
+ };
 
-  panel.innerHTML=`
-    <h3 style="margin-top:0">${titles[work]}</h3>
-    <div id="workContent"></div>
+ panel.classList.remove("hidden");
+
+ panel.innerHTML=
+ "<h3>"+contentTitles[work]+"</h3>"+
+ '<div id="workContent"></div>';
+
+ const box=document
+ .getElementById("workContent");
+
+
+ if(work==="deposit"){
+
+  box.innerHTML=`
+   <input id="amount"
+   type="number"
+   min="1"
+   placeholder="जमा राशि">
+
+   <button id="depositBtn">
+   पैसा जमा करें
+   </button>
   `;
 
-  const content=document.getElementById("workContent");
+  document.getElementById("depositBtn")
+  .addEventListener("click",deposit);
 
-  if(work==="deposit"){
+ }
 
-    content.innerHTML=`
-      <input id="amount" type="number" min="1"
-        placeholder="जमा राशि">
-      <button onclick="depositMoney()">पैसा जमा करें</button>
-    `;
 
-  }
+ else if(work==="withdraw"){
 
-  else if(work==="withdraw"){
+  box.innerHTML=`
+   <input id="amount"
+   type="number"
+   min="1"
+   placeholder="निकासी राशि">
 
-    content.innerHTML=`
-      <input id="amount" type="number" min="1"
-        placeholder="निकासी राशि">
-      <button onclick="withdrawMoney()">पैसा निकालें</button>
-    `;
+   <button id="withdrawBtn">
+   पैसा निकालें
+   </button>
+  `;
 
-  }
+  document.getElementById("withdrawBtn")
+  .addEventListener("click",withdraw);
 
-  else if(work==="balance"){
+ }
 
-    const c=getSelectedCustomer();
 
-    content.innerHTML=`
-      <div class="notice">
-        उपलब्ध Balance: <b>${money(c.balance)}</b>
-      </div>
-      <br>
-      <button onclick="returnToCustomer()">Back</button>
-    `;
+ else if(work==="balance"){
 
-  }
+  const c=getCustomer();
 
-  else if(work==="transfer"){
+  box.innerHTML=`
+   <div class="notice">
+   उपलब्ध Balance:
+   <b>${money(c.balance)}</b>
+   </div>
+   <br>
+   <button id="backBtn">Back</button>
+  `;
 
-    content.innerHTML=`
-      <input id="transferAccount"
-        placeholder="Receiver Account Number">
+  document.getElementById("backBtn")
+  .addEventListener("click",backToCustomer);
 
-      <input id="amount"
-        type="number"
-        min="1"
-        placeholder="Transfer Amount">
+ }
 
-      <button onclick="transferMoney()">Transfer</button>
-    `;
 
-  }
+ else if(work==="transfer"){
 
-  else if(work==="kyc"){
+  box.innerHTML=`
+   <input id="receiver"
+   inputmode="numeric"
+   maxlength="12"
+   placeholder="Receiver Account Number">
 
-    const c=getSelectedCustomer();
+   <input id="amount"
+   type="number"
+   min="1"
+   placeholder="Transfer Amount">
 
-    content.innerHTML=`
-      <p>Current KYC Status:
-        <b>${c.kyc}</b>
-      </p>
+   <button id="transferBtn">
+   Transfer
+   </button>
+  `;
 
-      <input id="kycNumber"
-        placeholder="KYC Reference Number">
+  document.getElementById("transferBtn")
+  .addEventListener("click",transfer);
 
-      <button onclick="updateKyc()">KYC Update</button>
-    `;
+ }
 
-  }
 
-  else if(work==="cheque"){
+ else if(work==="kyc"){
 
-    const c=getSelectedCustomer();
+  const c=getCustomer();
 
-    content.innerHTML=`
-      <p>Status: <b>${c.cheque}</b></p>
+  box.innerHTML=`
+   <p>Current KYC:
+   <b>${safe(c.kyc)}</b></p>
 
-      <button onclick="issueCheque()">
-        Issue Cheque Book
-      </button>
-    `;
+   <input id="kycRef"
+   placeholder="KYC Reference Number">
 
-  }
+   <button id="kycBtn">
+   KYC Update
+   </button>
+  `;
 
-  else if(work==="atm"){
+  document.getElementById("kycBtn")
+  .addEventListener("click",updateKyc);
 
-    const c=getSelectedCustomer();
+ }
 
-    content.innerHTML=`
-      <p>ATM/Debit Card:
-        <b>${c.atm}</b>
-      </p>
 
-      <button onclick="issueATM()">
-        Issue ATM/Debit Card
-      </button>
-    `;
+ else if(work==="cheque"){
 
-  }
+  const c=getCustomer();
 
-  else if(work==="upi"){
+  box.innerHTML=`
+   <p>Status:
+   <b>${safe(c.cheque)}</b></p>
 
-    const c=getSelectedCustomer();
+   <button id="chequeBtn">
+   Issue Cheque Book
+   </button>
+  `;
 
-    content.innerHTML=`
-      <p>UPI Status:
-        <b>${c.upi}</b>
-      </p>
+  document.getElementById("chequeBtn")
+  .addEventListener("click",issueCheque);
 
-      <input id="upiId"
-        placeholder="UPI ID">
+ }
 
-      <button onclick="registerUPI()">
-        Register UPI
-      </button>
-    `;
 
-  }
+ else if(work==="atm"){
 
-  else if(work==="fd"){
+  const c=getCustomer();
 
-    content.innerHTML=`
-      <input id="fdAmount"
-        type="number"
-        min="1"
-        placeholder="FD Amount">
+  box.innerHTML=`
+   <p>ATM/Debit Card:
+   <b>${safe(c.atm)}</b></p>
 
-      <input id="fdYears"
-        type="number"
-        min="1"
-        placeholder="Period (Years)">
+   <button id="atmBtn">
+   Issue ATM/Debit Card
+   </button>
+  `;
 
-      <button onclick="createFD()">
-        Create FD
-      </button>
+  document.getElementById("atmBtn")
+  .addEventListener("click",issueATM);
 
-      <div id="fdList"></div>
-    `;
+ }
 
-    renderFD();
 
-  }
+ else if(work==="upi"){
 
-  else if(work==="loan"){
+  const c=getCustomer();
 
-    content.innerHTML=`
-      <input id="loanAmount"
-        type="number"
-        min="1"
-        placeholder="Loan Amount">
+  box.innerHTML=`
+   <p>UPI Status:
+   <b>${safe(c.upi)}</b></p>
 
-      <select id="loanType">
-        <option>Personal Loan</option>
-        <option>Home Loan</option>
-        <option>Education Loan</option>
-        <option>Vehicle Loan</option>
-      </select>
+   <input id="upiId"
+   placeholder="UPI ID">
 
-      <button onclick="applyLoan()">Apply Loan</button>
+   <button id="upiBtn">
+   Register UPI
+   </button>
+  `;
 
-      <div id="loanList"></div>
-    `;
+  document.getElementById("upiBtn")
+  .addEventListener("click",registerUPI);
 
-    renderLoans();
+ }
 
-  }
 
-  else if(work==="statement"){
+ else if(work==="fd"){
 
-    renderStatement();
+  box.innerHTML=`
+   <input id="fdAmount"
+   type="number"
+   min="1"
+   placeholder="FD Amount">
 
-  }
+   <input id="fdYears"
+   type="number"
+   min="1"
+   placeholder="Period (Years)">
 
-  else if(work==="delete"){
+   <button id="fdBtn">
+   Create FD
+   </button>
 
-    const c=getSelectedCustomer();
+   <div id="fdRecords"></div>
+  `;
 
-    content.innerHTML=`
-      <div class="notice">
-        Account: <b>${c.account}</b><br>
-        Customer: <b>${escapeHtml(c.name)}</b><br>
-        Balance: <b>${money(c.balance)}</b>
-      </div>
+  document.getElementById("fdBtn")
+  .addEventListener("click",createFD);
 
-      <br>
+  renderFD();
 
-      <button class="btn-danger"
-        onclick="deleteAccount()">
-        Permanently Delete Account
-      </button>
-    `;
+ }
 
-  }
+
+ else if(work==="loan"){
+
+  box.innerHTML=`
+   <input id="loanAmount"
+   type="number"
+   min="1"
+   placeholder="Loan Amount">
+
+   <select id="loanType">
+   <option>Personal Loan</option>
+   <option>Home Loan</option>
+   <option>Education Loan</option>
+   <option>Vehicle Loan</option>
+   </select>
+
+   <button id="loanBtn">
+   Apply Loan
+   </button>
+
+   <div id="loanRecords"></div>
+  `;
+
+  document.getElementById("loanBtn")
+  .addEventListener("click",applyLoan);
+
+  renderLoans();
+
+ }
+
+
+ else if(work==="statement"){
+
+  renderStatement();
+
+ }
+
+
+ else if(work==="delete"){
+
+  const c=getCustomer();
+
+  box.innerHTML=`
+   <div class="notice">
+   Customer: <b>${safe(c.name)}</b><br>
+   Account: <b>${c.account}</b><br>
+   Balance: <b>${money(c.balance)}</b>
+   </div>
+
+   <br>
+
+   <button id="deleteBtn" class="btn-red">
+   Permanently Delete Account
+   </button>
+  `;
+
+  document.getElementById("deleteBtn")
+  .addEventListener("click",deleteAccount);
+
+ }
 
 }
 
-function depositMoney(){
 
-  const amount=Number(document.getElementById("amount").value);
+/* ---------- DEPOSIT ---------- */
 
-  if(amount<=0){
-    alert("सही राशि डालें।");
-    return;
-  }
+function deposit(){
 
-  const c=getSelectedCustomer();
+ const amount=Number(
+  document.getElementById("amount").value
+ );
 
-  c.balance+=amount;
+ if(!Number.isFinite(amount)||amount<=0){
+  alert("सही राशि डालें।");
+  return;
+ }
 
-  c.transactions.push({
-    date:new Date().toLocaleString("en-IN"),
-    type:"Deposit",
-    amount:amount,
-    details:"Cash deposit"
-  });
+ const c=getCustomer();
 
-  saveCustomers();
-  updateCustomerDetails();
+ c.balance+=amount;
 
-  alert("₹"+amount.toLocaleString("en-IN")+" जमा हो गए।");
+ c.transactions.push({
+  date:new Date().toLocaleString("en-IN"),
+  type:"Deposit",
+  amount:amount,
+  details:"Cash deposit"
+ });
 
-  returnToCustomer();
+ saveData();
+ updateDetails();
+
+ alert("पैसा जमा हो गया।");
+
+ backToCustomer();
 }
 
-function withdrawMoney(){
 
-  const amount=Number(document.getElementById("amount").value);
+/* ---------- WITHDRAW ---------- */
 
-  if(amount<=0){
-    alert("सही राशि डालें।");
-    return;
-  }
+function withdraw(){
 
-  const c=getSelectedCustomer();
+ const amount=Number(
+  document.getElementById("amount").value
+ );
 
-  if(amount>c.balance){
-    alert("Insufficient Balance.");
-    return;
-  }
+ if(!Number.isFinite(amount)||amount<=0){
+  alert("सही राशि डालें।");
+  return;
+ }
 
-  c.balance-=amount;
+ const c=getCustomer();
 
-  c.transactions.push({
-    date:new Date().toLocaleString("en-IN"),
-    type:"Withdrawal",
-    amount:amount,
-    details:"Cash withdrawal"
-  });
+ if(amount>c.balance){
+  alert("Insufficient Balance.");
+  return;
+ }
 
-  saveCustomers();
-  updateCustomerDetails();
+ c.balance-=amount;
 
-  alert("₹"+amount.toLocaleString("en-IN")+" निकाल दिए गए।");
+ c.transactions.push({
+  date:new Date().toLocaleString("en-IN"),
+  type:"Withdrawal",
+  amount:amount,
+  details:"Cash withdrawal"
+ });
 
-  returnToCustomer();
+ saveData();
+ updateDetails();
+
+ alert("पैसा निकाल दिया गया।");
+
+ backToCustomer();
 }
 
-function transferMoney(){
 
-  const receiverAccount =
-    document.getElementById("transferAccount").value.trim();
+/* ---------- TRANSFER ---------- */
 
-  const amount=
-    Number(document.getElementById("amount").value);
+function transfer(){
 
-  if(!/^\d{12}$/.test(receiverAccount)){
-    alert("Receiver का 12-अंकीय Account Number डालें।");
-    return;
-  }
+ const receiverNo=document
+ .getElementById("receiver").value.trim();
 
-  if(receiverAccount===selectedAccount){
-    alert("अपने ही account में transfer नहीं कर सकते।");
-    return;
-  }
+ const amount=Number(
+  document.getElementById("amount").value
+ );
 
-  if(amount<=0){
-    alert("सही राशि डालें।");
-    return;
-  }
+ if(!/^\d{12}$/.test(receiverNo)){
+  alert("12 अंकों का receiver account डालें।");
+  return;
+ }
 
-  const sender=getSelectedCustomer();
+ if(amount<=0){
+  alert("सही राशि डालें।");
+  return;
+ }
 
-  const receiver=customers.find(
-    c=>c.account===receiverAccount
-  );
+ const sender=getCustomer();
 
-  if(!receiver){
-    alert("Receiver account नहीं मिला।");
-    return;
-  }
+ const receiver=customers.find(
+  c=>c.account===receiverNo
+ );
 
-  if(amount>sender.balance){
-    alert("Insufficient Balance.");
-    return;
-  }
+ if(!receiver){
+  alert("Receiver account नहीं मिला।");
+  return;
+ }
 
-  sender.balance-=amount;
-  receiver.balance+=amount;
+ if(receiver.account===sender.account){
+  alert("अपने ही account में transfer नहीं कर सकते।");
+  return;
+ }
 
-  sender.transactions.push({
-    date:new Date().toLocaleString("en-IN"),
-    type:"Transfer Debit",
-    amount:amount,
-    details:"To "+receiver.account
-  });
+ if(amount>sender.balance){
+  alert("Insufficient Balance.");
+  return;
+ }
 
-  receiver.transactions.push({
-    date:new Date().toLocaleString("en-IN"),
-    type:"Transfer Credit",
-    amount:amount,
-    details:"From "+sender.account
-  });
+ sender.balance-=amount;
+ receiver.balance+=amount;
 
-  saveCustomers();
-  updateCustomerDetails();
+ sender.transactions.push({
+  date:new Date().toLocaleString("en-IN"),
+  type:"Transfer Debit",
+  amount:amount,
+  details:"To "+receiver.account
+ });
 
-  alert("Transfer successful.");
+ receiver.transactions.push({
+  date:new Date().toLocaleString("en-IN"),
+  type:"Transfer Credit",
+  amount:amount,
+  details:"From "+sender.account
+ });
 
-  returnToCustomer();
+ saveData();
+ updateDetails();
+
+ alert("Transfer successful.");
+
+ backToCustomer();
 }
+
+
+/* ---------- KYC ---------- */
 
 function updateKyc(){
 
-  const ref=document.getElementById("kycNumber").value.trim();
+ const ref=document
+ .getElementById("kycRef").value.trim();
 
-  if(!ref){
-    alert("KYC reference number डालें।");
-    return;
-  }
+ if(!ref){
+  alert("KYC reference number डालें।");
+  return;
+ }
 
-  const c=getSelectedCustomer();
+ const c=getCustomer();
 
-  c.kyc="Updated";
+ c.kyc="Updated";
 
-  c.transactions.push({
-    date:new Date().toLocaleString("en-IN"),
-    type:"KYC Update",
-    amount:0,
-    details:ref
-  });
+ c.transactions.push({
+  date:new Date().toLocaleString("en-IN"),
+  type:"KYC Update",
+  amount:0,
+  details:ref
+ });
 
-  saveCustomers();
+ saveData();
 
-  alert("KYC Update complete.");
+ alert("KYC Update complete.");
 
-  returnToCustomer();
+ backToCustomer();
 }
+
+
+/* ---------- CHEQUE ---------- */
 
 function issueCheque(){
 
-  const c=getSelectedCustomer();
+ const c=getCustomer();
 
-  if(c.cheque==="Issued"){
-    alert("Cheque Book पहले से issued है।");
-    return;
-  }
+ if(c.cheque==="Issued"){
+  alert("Cheque Book पहले से issued है।");
+  return;
+ }
 
-  c.cheque="Issued";
+ c.cheque="Issued";
 
-  c.transactions.push({
-    date:new Date().toLocaleString("en-IN"),
-    type:"Cheque Book",
-    amount:0,
-    details:"Issued"
-  });
+ c.transactions.push({
+  date:new Date().toLocaleString("en-IN"),
+  type:"Cheque Book",
+  amount:0,
+  details:"Issued"
+ });
 
-  saveCustomers();
+ saveData();
 
-  alert("Cheque Book issued.");
+ alert("Cheque Book issued.");
 
-  returnToCustomer();
+ backToCustomer();
 }
+
+
+/* ---------- ATM ---------- */
 
 function issueATM(){
 
-  const c=getSelectedCustomer();
+ const c=getCustomer();
 
-  if(c.atm==="Issued"){
-    alert("ATM/Debit Card पहले से issued है।");
-    return;
-  }
+ if(c.atm==="Issued"){
+  alert("ATM/Debit Card पहले से issued है।");
+  return;
+ }
 
-  c.atm="Issued";
+ c.atm="Issued";
 
-  c.transactions.push({
-    date:new Date().toLocaleString("en-IN"),
-    type:"ATM/Debit Card",
-    amount:0,
-    details:"Issued"
-  });
+ c.transactions.push({
+  date:new Date().toLocaleString("en-IN"),
+  type:"ATM/Debit Card",
+  amount:0,
+  details:"Issued"
+ });
 
-  saveCustomers();
+ saveData();
 
-  alert("ATM/Debit Card issued.");
+ alert("ATM/Debit Card issued.");
 
-  returnToCustomer();
+ backToCustomer();
 }
+
+
+/* ---------- UPI ---------- */
 
 function registerUPI(){
 
-  const upi=document.getElementById("upiId").value.trim();
+ const upi=document
+ .getElementById("upiId").value.trim();
 
-  if(!upi){
-    alert("UPI ID डालें।");
-    return;
-  }
+ if(!upi){
+  alert("UPI ID डालें।");
+  return;
+ }
 
-  const c=getSelectedCustomer();
+ const c=getCustomer();
 
-  c.upi=upi;
+ c.upi=upi;
 
-  c.transactions.push({
-    date:new Date().toLocaleString("en-IN"),
-    type:"UPI Registration",
-    amount:0,
-    details:upi
-  });
+ c.transactions.push({
+  date:new Date().toLocaleString("en-IN"),
+  type:"UPI Registration",
+  amount:0,
+  details:upi
+ });
 
-  saveCustomers();
+ saveData();
 
-  alert("UPI registered.");
+ alert("UPI registered.");
 
-  returnToCustomer();
+ backToCustomer();
 }
+
+
+/* ---------- FD ---------- */
 
 function createFD(){
 
-  const amount=Number(
-    document.getElementById("fdAmount").value
-  );
+ const amount=Number(
+  document.getElementById("fdAmount").value
+ );
 
-  const years=Number(
-    document.getElementById("fdYears").value
-  );
+ const years=Number(
+  document.getElementById("fdYears").value
+ );
 
-  const c=getSelectedCustomer();
+ const c=getCustomer();
 
-  if(amount<=0 || years<=0){
-    alert("सही amount और period डालें।");
-    return;
-  }
+ if(amount<=0||years<=0){
+  alert("सही amount और period डालें।");
+  return;
+ }
 
-  if(amount>c.balance){
-    alert("FD के लिए पर्याप्त balance नहीं है।");
-    return;
-  }
+ if(amount>c.balance){
+  alert("FD के लिए पर्याप्त balance नहीं है।");
+  return;
+ }
 
-  c.balance-=amount;
+ c.balance-=amount;
 
-  const fd={
-    id:Date.now(),
-    amount:amount,
-    years:years,
-    date:new Date().toLocaleDateString("en-IN"),
-    status:"Active"
-  };
+ c.fd.push({
+  id:Date.now(),
+  amount:amount,
+  years:years,
+  date:new Date().toLocaleDateString("en-IN"),
+  status:"Active"
+ });
 
-  c.fd.push(fd);
+ c.transactions.push({
+  date:new Date().toLocaleString("en-IN"),
+  type:"FD",
+  amount:amount,
+  details:years+" years"
+ });
 
-  c.transactions.push({
-    date:new Date().toLocaleString("en-IN"),
-    type:"FD",
-    amount:amount,
-    details:years+" years"
-  });
+ saveData();
+ updateDetails();
 
-  saveCustomers();
-  updateCustomerDetails();
+ alert("FD successfully created.");
 
-  alert("FD successfully created.");
-
-  returnToCustomer();
+ backToCustomer();
 }
+
 
 function renderFD(){
 
-  const c=getSelectedCustomer();
+ const c=getCustomer();
 
-  const box=document.getElementById("fdList");
+ const box=document
+ .getElementById("fdRecords");
 
-  if(!box) return;
+ if(!box)return;
 
-  if(c.fd.length===0){
-    box.innerHTML="<p>No FD records.</p>";
-    return;
-  }
+ if(!c.fd.length){
+  box.innerHTML="<p>No FD records.</p>";
+  return;
+ }
 
-  box.innerHTML=`
-    <h4>FD Records</h4>
-    <table>
-      <tr>
-        <th>Amount</th>
-        <th>Years</th>
-        <th>Date</th>
-        <th>Status</th>
-      </tr>
+ box.innerHTML=`
+ <h4>FD Records</h4>
 
-      ${c.fd.map(fd=>`
-        <tr>
-          <td>${money(fd.amount)}</td>
-          <td>${fd.years}</td>
-          <td>${fd.date}</td>
-          <td>${fd.status}</td>
-        </tr>
-      `).join("")}
+ <table>
+ <tr>
+ <th>Amount</th>
+ <th>Years</th>
+ <th>Date</th>
+ <th>Status</th>
+ </tr>
 
-    </table>
-  `;
+ ${c.fd.map(function(fd){
+
+ return `
+ <tr>
+ <td>${money(fd.amount)}</td>
+ <td>${fd.years}</td>
+ <td>${safe(fd.date)}</td>
+ <td>${safe(fd.status)}</td>
+ </tr>
+ `;
+
+ }).join("")}
+
+ </table>
+ `;
 }
+
+
+/* ---------- LOAN ---------- */
 
 function applyLoan(){
 
-  const amount=
-    Number(document.getElementById("loanAmount").value);
+ const amount=Number(
+  document.getElementById("loanAmount").value
+ );
 
-  const type=
-    document.getElementById("loanType").value;
+ const type=document
+ .getElementById("loanType").value;
 
-  if(amount<=0){
-    alert("Loan amount डालें।");
-    return;
-  }
+ if(amount<=0){
+  alert("Loan amount डालें।");
+  return;
+ }
 
-  const c=getSelectedCustomer();
+ const c=getCustomer();
 
-  const loan={
-    id:Date.now(),
-    amount:amount,
-    type:type,
-    date:new Date().toLocaleDateString("en-IN"),
-    status:"Application Submitted"
-  };
+ c.loan.push({
+  id:Date.now(),
+  amount:amount,
+  type:type,
+  date:new Date().toLocaleDateString("en-IN"),
+  status:"Application Submitted"
+ });
 
-  c.loan.push(loan);
+ c.transactions.push({
+  date:new Date().toLocaleString("en-IN"),
+  type:"Loan Application",
+  amount:amount,
+  details:type
+ });
 
-  c.transactions.push({
-    date:new Date().toLocaleString("en-IN"),
-    type:"Loan Application",
-    amount:amount,
-    details:type
-  });
+ saveData();
 
-  saveCustomers();
+ alert("Loan application submitted.");
 
-  alert("Loan application submitted.");
-
-  returnToCustomer();
+ backToCustomer();
 }
+
 
 function renderLoans(){
 
-  const c=getSelectedCustomer();
-  const box=document.getElementById("loanList");
+ const c=getCustomer();
 
-  if(!box) return;
+ const box=document
+ .getElementById("loanRecords");
 
-  if(c.loan.length===0){
-    box.innerHTML="<p>No loan applications.</p>";
-    return;
-  }
+ if(!box)return;
 
-  box.innerHTML=`
-    <h4>Loan Applications</h4>
+ if(!c.loan.length){
+  box.innerHTML="<p>No loan applications.</p>";
+  return;
+ }
 
-    <table>
-      <tr>
-        <th>Type</th>
-        <th>Amount</th>
-        <th>Date</th>
-        <th>Status</th>
-      </tr>
+ box.innerHTML=`
+ <h4>Loan Applications</h4>
 
-      ${c.loan.map(l=>`
-        <tr>
-          <td>${escapeHtml(l.type)}</td>
-          <td>${money(l.amount)}</td>
-          <td>${l.date}</td>
-          <td>${l.status}</td>
-        </tr>
-      `).join("")}
+ <table>
+ <tr>
+ <th>Type</th>
+ <th>Amount</th>
+ <th>Date</th>
+ <th>Status</th>
+ </tr>
 
-    </table>
-  `;
+ ${c.loan.map(function(l){
+
+ return `
+ <tr>
+ <td>${safe(l.type)}</td>
+ <td>${money(l.amount)}</td>
+ <td>${safe(l.date)}</td>
+ <td>${safe(l.status)}</td>
+ </tr>
+ `;
+
+ }).join("")}
+
+ </table>
+ `;
 }
+
+
+/* ---------- STATEMENT ---------- */
 
 function renderStatement(){
 
-  const c=getSelectedCustomer();
+ const c=getCustomer();
 
-  const box=document.getElementById("workContent");
+ const box=document
+ .getElementById("workContent");
 
-  if(!c.transactions || c.transactions.length===0){
-    box.innerHTML="<p>No transactions.</p>";
-    return;
-  }
+ if(!c.transactions.length){
 
-  box.innerHTML=`
+  box.innerHTML="<p>No transactions.</p>";
+  return;
+ }
 
-    <div style="overflow:auto">
+ box.innerHTML=`
 
-    <table>
+ <div style="overflow:auto">
 
-      <tr>
-        <th>Date</th>
-        <th>Type</th>
-        <th>Amount</th>
-        <th>Details</th>
-      </tr>
+ <table>
 
-      ${c.transactions.slice().reverse().map(t=>`
+ <tr>
+ <th>Date</th>
+ <th>Type</th>
+ <th>Amount</th>
+ <th>Details</th>
+ </tr>
 
-        <tr>
-          <td>${escapeHtml(t.date)}</td>
-          <td>${escapeHtml(t.type)}</td>
-          <td>${money(t.amount)}</td>
-          <td>${escapeHtml(t.details)}</td>
-        </tr>
+ ${c.transactions.slice().reverse()
+ .map(function(t){
 
-      `).join("")}
+ return `
+ <tr>
+ <td>${safe(t.date)}</td>
+ <td>${safe(t.type)}</td>
+ <td>${money(t.amount)}</td>
+ <td>${safe(t.details)}</td>
+ </tr>
+ `;
 
-    </table>
+ }).join("")}
 
-    </div>
+ </table>
 
-    <br>
+ </div>
 
-    <button onclick="returnToCustomer()">Back</button>
-  `;
+ <br>
+
+ <button id="statementBack">
+ Back
+ </button>
+ `;
+
+ document.getElementById("statementBack")
+ .addEventListener("click",backToCustomer);
 }
+
+
+/* ---------- DELETE ---------- */
 
 function deleteAccount(){
 
-  const c=getSelectedCustomer();
+ const c=getCustomer();
 
-  const confirmation=
-    prompt(
-      "Account delete करने के लिए customer का नाम लिखें:"
-    );
+ const name=prompt(
+  "Account delete करने के लिए customer का नाम लिखें:"
+ );
 
-  if(confirmation !== c.name){
-    alert("Name match नहीं हुआ। Account delete नहीं किया गया।");
-    return;
-  }
+ if(name!==c.name){
 
-  customers=
-    customers.filter(x=>x.account!==selectedAccount);
+  alert(
+   "Name match नहीं हुआ। Account delete नहीं किया गया।"
+  );
 
-  saveCustomers();
+  return;
+ }
 
-  selectedAccount=null;
+ customers=customers.filter(
+  x=>x.account!==selectedAccount
+ );
 
-  document.getElementById("customerSection")
-    .classList.add("hidden");
+ saveData();
 
-  alert("Account deleted successfully.");
+ selectedAccount=null;
 
-  showAllCustomers();
+ document.getElementById("customerSection")
+ .classList.add("hidden");
+
+ alert("Account deleted successfully.");
+
+ showAllCustomers();
 }
 
-function returnToCustomer(){
 
-  document.getElementById("workPanel")
-    .classList.add("hidden");
+/* ---------- BACK ---------- */
 
-  updateCustomerDetails();
+function backToCustomer(){
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+ document.getElementById("workPanel")
+ .classList.add("hidden");
+
+ updateDetails();
+
+ window.scrollTo(0,0);
 }
 
-/* ENTER KEY SEARCH */
 
-document.getElementById("searchAccount")
-  .addEventListener("keydown",function(e){
-
-    if(e.key==="Enter"){
-      searchCustomer();
-    }
-
-  });
-
-/* INITIAL DATA DISPLAY */
+/* ---------- START ---------- */
 
 showAllCustomers();
 
