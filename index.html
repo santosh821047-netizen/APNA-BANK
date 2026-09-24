@@ -269,6 +269,7 @@ Cancel
 
 <script>
 
+
 "use strict";
 
 const BANK_PASSWORD = "2468";
@@ -338,103 +339,9 @@ function safe(text){
 
 /* ---------- ACCOUNT OPENING ---------- */
 
-document.getElementById("newAccountBtn")
-.addEventListener("click",function(){
-
- document.getElementById("accountForm")
- .classList.remove("hidden");
-
-});
-
-
-document.getElementById("cancelAccountBtn")
-.addEventListener("click",function(){
-
- document.getElementById("accountForm")
- .classList.add("hidden");
-
-});
-
-
-document.getElementById("createBtn")
-.addEventListener("click",function(){
-
- const name=document
- .getElementById("newName").value.trim();
-
- const type=document
- .getElementById("newType").value;
-
- const balance=Number(
-  document.getElementById("openingBalance").value || 0
- );
-
- if(!name){
-  alert("ग्राहक का नाम डालें।");
-  return;
- }
-
- if(balance<0){
-  alert("Opening Balance सही डालें।");
-  return;
- }
-
- const customer={
-  id:Date.now(),
-  name:name,
-  account:accountNumber(),
-  type:type,
-  balance:balance,
-  kyc:"Pending",
-  cheque:"Not Issued",
-  atm:"Not Issued",
-  upi:"Not Registered",
-  fd:[],
-  loan:[],
-  transactions:[
-   {
-    date:new Date().toLocaleString("en-IN"),
-    type:"Account Opening",
-    amount:balance,
-    details:"New account created"
-   }
-  ]
- };
-
- customers.push(customer);
- saveData();
-
- document.getElementById("newName").value="";
- document.getElementById("openingBalance").value="";
-
- document.getElementById("accountForm")
- .classList.add("hidden");
-
- selectCustomer(customer.account);
-
- alert(
-  "खाता सफलतापूर्वक खुल गया।\n\n"+
-  "Customer: "+customer.name+
-  "\nAccount Number: "+customer.account
- );
-
-});
-
+/* Event handling is centralized below so one missing element can never stop the rest of the game. */
 
 /* ---------- SEARCH ---------- */
-
-document.getElementById("searchBtn")
-.addEventListener("click",searchCustomer);
-
-document.getElementById("searchAccount")
-.addEventListener("keydown",function(e){
-
- if(e.key==="Enter"){
-  searchCustomer();
- }
-
-});
-
 
 function searchCustomer(){
 
@@ -494,10 +401,6 @@ function updateDetails(){
 
 /* ---------- ALL CUSTOMERS ---------- */
 
-document.getElementById("allBtn")
-.addEventListener("click",showAllCustomers);
-
-
 function showAllCustomers(){
 
  const box=document
@@ -554,18 +457,6 @@ function showAllCustomers(){
 
 /* ---------- WORK BUTTONS ---------- */
 
-document.querySelectorAll("[data-work]")
-.forEach(function(btn){
-
- btn.addEventListener("click",function(){
-
-  startWork(btn.dataset.work);
-
- });
-
-});
-
-
 function startWork(work){
 
  if(!selectedAccount){
@@ -595,25 +486,6 @@ function startWork(work){
 
 
 /* ---------- PASSWORD FIX ---------- */
-
-document.getElementById("continueBtn")
-.addEventListener("click",checkPassword);
-
-
-document.getElementById("closePasswordBtn")
-.addEventListener("click",closePassword);
-
-
-document.getElementById("passwordInput")
-.addEventListener("keydown",function(e){
-
- if(e.key==="Enter"){
-  e.preventDefault();
-  checkPassword();
- }
-
-});
-
 
 function closePassword(){
 
@@ -1484,10 +1356,91 @@ function backToCustomer(){
 }
 
 
-/* ---------- START ---------- */
+/* ---------- START / EVENT DELEGATION ---------- */
 
-document.getElementById("passwordModal").classList.add("hidden");
-pendingWork = null;
-selectedAccount = null;
+function initBank(){
+ try{
+  showAllCustomers();
+ }catch(e){
+  console.error("APNA BANK startup error:", e);
+ }
+}
 
-showAllCustomers();
+document.addEventListener("click",function(e){
+ const el=e.target.closest("button");
+ if(!el)return;
+
+ if(el.id==="newAccountBtn"){
+  document.getElementById("accountForm").classList.remove("hidden");
+  return;
+ }
+ if(el.id==="cancelAccountBtn"){
+  document.getElementById("accountForm").classList.add("hidden");
+  return;
+ }
+ if(el.id==="createBtn"){
+  createAccount();
+  return;
+ }
+ if(el.id==="searchBtn"){
+  searchCustomer();
+  return;
+ }
+ if(el.id==="allBtn"){
+  showAllCustomers();
+  return;
+ }
+ if(el.dataset.select){
+  selectCustomer(el.dataset.select);
+  return;
+ }
+ if(el.dataset.work){
+  startWork(el.dataset.work);
+  return;
+ }
+ if(el.id==="continueBtn"){
+  checkPassword();
+  return;
+ }
+ if(el.id==="closePasswordBtn"){
+  closePassword();
+  return;
+ }
+});
+
+document.addEventListener("keydown",function(e){
+ if(e.key!=="Enter")return;
+ const el=e.target;
+ if(el && el.id==="searchAccount"){
+  e.preventDefault();
+  searchCustomer();
+ }else if(el && el.id==="passwordInput"){
+  e.preventDefault();
+  checkPassword();
+ }
+});
+
+function createAccount(){
+ const name=document.getElementById("newName").value.trim();
+ const type=document.getElementById("newType").value;
+ const balance=Number(document.getElementById("openingBalance").value || 0);
+ if(!name){ alert("ग्राहक का नाम डालें।"); return; }
+ if(!Number.isFinite(balance)||balance<0){ alert("Opening Balance सही डालें।"); return; }
+ const customer={id:Date.now(),name:name,account:accountNumber(),type:type,balance:balance,kyc:"Pending",cheque:"Not Issued",atm:"Not Issued",upi:"Not Registered",fd:[],loan:[],transactions:[{date:new Date().toLocaleString("en-IN"),type:"Account Opening",amount:balance,details:"New account created"}]};
+ customers.push(customer); saveData();
+ document.getElementById("newName").value="";
+ document.getElementById("openingBalance").value="";
+ document.getElementById("accountForm").classList.add("hidden");
+ selectCustomer(customer.account);
+ alert("खाता सफलतापूर्वक खुल गया।\n\nCustomer: "+customer.name+"\nAccount Number: "+customer.account);
+}
+
+if(document.readyState==="loading"){
+ document.addEventListener("DOMContentLoaded",initBank,{once:true});
+}else{
+ initBank();
+}
+
+</script>
+</body>
+</html>
